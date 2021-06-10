@@ -1,0 +1,652 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/9/2021 2:20:22 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="VESTA"
+  DTS:CreatorName="VESTA\vital"
+  DTS:DTSID="{F8FB61C1-EF42-4B40-A6A3-2C99EE118E8B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.166"
+  DTS:LocaleID="8192"
+  DTS:ObjectName="CustomLogging"
+  DTS:PackageType="5"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{3DBAB6EB-2149-4AB5-A809-793AD70B0F16}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[VESTA.TestCustomLogging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E0419005-2B2D-463A-958F-788C2AF6821A}"
+      DTS:ObjectName="VESTA.TestCustomLogging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=VESTA;Initial Catalog=TestCustomLogging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\dft_dbo_CustomLogging"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Задача потока данных"
+      DTS:DTSID="{ABAA8842-5AF2-4C37-A197-18B39B0EEAC0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dft_dbo_CustomLogging"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\dft_dbo_CustomLogging\der_AddDate"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Производный столбец;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;0"
+              description="Создает новые значения столбцов путем применения выражений к входным столбцам преобразования. Создает новые столбцы или перезаписывает существующие. Пример: объединение значений столбцов &quot;first name&quot; и &quot;last name&quot; и создание столбца &quot;full name&quot;."
+              name="der_AddDate"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dft_dbo_CustomLogging\der_AddDate.Inputs[Вход производного столбца]"
+                  description="Ввод преобразования &quot;Производный столбец&quot;"
+                  name="Вход производного столбца">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_dbo_CustomLogging\der_AddDate.Outputs[Выход производного столбца]"
+                  description="Выход по умолчанию преобразования &quot;Производный столбец&quot;"
+                  exclusionGroup="1"
+                  name="Выход производного столбца"
+                  synchronousInputId="Package\dft_dbo_CustomLogging\der_AddDate.Inputs[Вход производного столбца]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_dbo_CustomLogging\der_AddDate.Outputs[Выход производного столбца].Columns[DateToConvert]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Вычисление"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\dft_dbo_CustomLogging\der_AddDate.Outputs[Выход производного столбца].Columns[DateToConvert]"
+                      name="DateToConvert"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Выражение производного столбца"
+                          name="Expression">"1600-01-00"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Понятное выражение производного столбца"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"1600-01-00"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_dbo_CustomLogging\der_AddDate.Outputs[Вывод ошибок производного столбца]"
+                  description="Вывод ошибок преобразования &quot;Производный столбец&quot;"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Вывод ошибок производного столбца"
+                  synchronousInputId="Package\dft_dbo_CustomLogging\der_AddDate.Inputs[Вход производного столбца]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_dbo_CustomLogging\der_AddDate.Outputs[Вывод ошибок производного столбца].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_dbo_CustomLogging\der_AddDate.Outputs[Вывод ошибок производного столбца].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_dbo_CustomLogging\der_AddDate.Outputs[Вывод ошибок производного столбца].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_dbo_CustomLogging\der_AddDate.Outputs[Вывод ошибок производного столбца].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_dbo_CustomLogging\ole_dst_dbo_CustomLogging"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Назначение &quot;OLE DB&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;4"
+              description="Назначение &quot;OLE DB&quot;"
+              name="ole_dst_dbo_CustomLogging"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowset">[ole_dst_dbo_CustomLogging]</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Команда SQL для выполнения."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает кодовую страницу столбца, используемую, когда недоступны сведения о кодовой странице из источника данных."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Вызывает безусловное использование значение свойства DefaultCodePage при описании символьных данных."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает используемый режим доступа к базе данных."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Указывает, должны ли значения в столбцах идентификаторов копироваться в назначение. Если свойство имеет значение false, значения в столбцах идентификаторов будут созданы автоматически в месте назначения. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Указывает, будут ли в назначение вставляться значения NULL для столбцов, содержащих их. Значение false показывает, что если столбец имеет значение NULL, то в назначение будет вставлено его значение по умолчанию. Применяется только в случае, если включена быстрая загрузка."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Задает параметры быстрой загрузки. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Задает, когда выдаются сообщения о фиксации транзакции в ходе вставки данных. Значение 0 задает, что по окончании вставки данных будет выдано одно сообщение о фиксации транзакции. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_dbo_CustomLogging\ole_dst_dbo_CustomLogging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VESTA.TestCustomLogging]"
+                  connectionManagerRefId="Package.ConnectionManagers[VESTA.TestCustomLogging]"
+                  description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft_dbo_CustomLogging\ole_dst_dbo_CustomLogging.Inputs[Вход назначения &quot;OLE DB&quot;]"
+                  errorOrTruncationOperation="Вставить"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Вход назначения &quot;OLE DB&quot;">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_dbo_CustomLogging\ole_dst_dbo_CustomLogging.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[logid]"
+                      cachedDataType="i4"
+                      cachedName="logid"
+                      externalMetadataColumnId="Package\dft_dbo_CustomLogging\ole_dst_dbo_CustomLogging.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[logid]"
+                      lineageId="Package\dft_dbo_CustomLogging\ole_src_SELECT_1.Outputs[Выход источника &quot;OLE DB&quot;].Columns[logid]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_dbo_CustomLogging\ole_dst_dbo_CustomLogging.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[logid]"
+                      dataType="i4"
+                      name="logid" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_dbo_CustomLogging\ole_dst_dbo_CustomLogging.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Вывод ошибок назначения &quot;OLE DB&quot;"
+                  synchronousInputId="Package\dft_dbo_CustomLogging\ole_dst_dbo_CustomLogging.Inputs[Вход назначения &quot;OLE DB&quot;]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_dbo_CustomLogging\ole_dst_dbo_CustomLogging.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_dbo_CustomLogging\ole_dst_dbo_CustomLogging.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_dbo_CustomLogging\ole_dst_dbo_CustomLogging.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_dbo_CustomLogging\ole_dst_dbo_CustomLogging.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_dbo_CustomLogging\ole_src_SELECT_1"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Источник &quot;OLE DB&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;7"
+              description="Источник &quot;OLE DB&quot;"
+              name="ole_src_SELECT_1"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Команда SQL для выполнения."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select 1 as logid
+union all
+select 2 as logid</property>
+                <property
+                  dataType="System.String"
+                  description="Переменная, содержащая команду SQL для выполнения."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает кодовую страницу столбца, используемую, когда недоступны сведения о кодовой странице из источника данных."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Вызывает безусловное использование значение свойства DefaultCodePage при описании символьных данных."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает используемый режим доступа к базе данных."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Сопоставления между параметрами в команде SQL и переменными."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_dbo_CustomLogging\ole_src_SELECT_1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VESTA.TestCustomLogging]"
+                  connectionManagerRefId="Package.ConnectionManagers[VESTA.TestCustomLogging]"
+                  description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dft_dbo_CustomLogging\ole_src_SELECT_1.Outputs[Выход источника &quot;OLE DB&quot;]"
+                  name="Выход источника &quot;OLE DB&quot;">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_dbo_CustomLogging\ole_src_SELECT_1.Outputs[Выход источника &quot;OLE DB&quot;].Columns[logid]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_dbo_CustomLogging\ole_src_SELECT_1.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[logid]"
+                      lineageId="Package\dft_dbo_CustomLogging\ole_src_SELECT_1.Outputs[Выход источника &quot;OLE DB&quot;].Columns[logid]"
+                      name="logid"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_dbo_CustomLogging\ole_src_SELECT_1.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[logid]"
+                      dataType="i4"
+                      name="logid" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dft_dbo_CustomLogging\ole_src_SELECT_1.Outputs[Вывод ошибок источника &quot;OLE DB&quot;]"
+                  isErrorOut="true"
+                  name="Вывод ошибок источника &quot;OLE DB&quot;">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_dbo_CustomLogging\ole_src_SELECT_1.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[logid]"
+                      dataType="i4"
+                      lineageId="Package\dft_dbo_CustomLogging\ole_src_SELECT_1.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[logid]"
+                      name="logid" />
+                    <outputColumn
+                      refId="Package\dft_dbo_CustomLogging\ole_src_SELECT_1.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_dbo_CustomLogging\ole_src_SELECT_1.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_dbo_CustomLogging\ole_src_SELECT_1.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_dbo_CustomLogging\ole_src_SELECT_1.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_dbo_CustomLogging\Аудит"
+              componentClassID="Microsoft.Lineage"
+              contactInfo="Аудит;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;0"
+              description="Включает сведения о среде, в которой выполняется пакет. Сопоставляет системные переменные с новыми выходными столбцами. Пример: добавление к потоку данных имени компьютера и оператора."
+              name="Аудит">
+              <inputs>
+                <input
+                  refId="Package\dft_dbo_CustomLogging\Аудит.Inputs[Аудит Вход 1]"
+                  name="Аудит Вход 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_dbo_CustomLogging\Аудит.Outputs[Аудит Выход 1]"
+                  exclusionGroup="1"
+                  name="Аудит Выход 1"
+                  synchronousInputId="Package\dft_dbo_CustomLogging\Аудит.Inputs[Аудит Вход 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_dbo_CustomLogging\Преобразование данных"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Преобразование данных;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;0"
+              description="Преобразование данных"
+              name="Преобразование данных"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dft_dbo_CustomLogging\Преобразование данных.Inputs[Входные данные преобразования данных]"
+                  name="Входные данные преобразования данных">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_dbo_CustomLogging\Преобразование данных.Inputs[Входные данные преобразования данных].Columns[DateToConvert]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="DateToConvert"
+                      lineageId="Package\dft_dbo_CustomLogging\der_AddDate.Outputs[Выход производного столбца].Columns[DateToConvert]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_dbo_CustomLogging\Преобразование данных.Outputs[Выходные данные преобразования данных]"
+                  exclusionGroup="1"
+                  name="Выходные данные преобразования данных"
+                  synchronousInputId="Package\dft_dbo_CustomLogging\Преобразование данных.Inputs[Входные данные преобразования данных]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_dbo_CustomLogging\Преобразование данных.Outputs[Выходные данные преобразования данных].Columns[DateConvert]"
+                      dataType="date"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\dft_dbo_CustomLogging\Преобразование данных.Outputs[Выходные данные преобразования данных].Columns[DateConvert]"
+                      name="DateConvert"
+                      truncationRowDisposition="RedirectRow">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Указывает входной столбец, служащий источником данных для преобразования."
+                          name="SourceInputColumnLineageID">#{Package\dft_dbo_CustomLogging\der_AddDate.Outputs[Выход производного столбца].Columns[DateToConvert]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Указывает, используются ли в столбце более производительные, не зависящие от локалей процедуры синтаксического анализа."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_dbo_CustomLogging\Преобразование данных.Outputs[Выходные данные ошибок преобразования данных]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Выходные данные ошибок преобразования данных"
+                  synchronousInputId="Package\dft_dbo_CustomLogging\Преобразование данных.Inputs[Входные данные преобразования данных]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_dbo_CustomLogging\Преобразование данных.Outputs[Выходные данные ошибок преобразования данных].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_dbo_CustomLogging\Преобразование данных.Outputs[Выходные данные ошибок преобразования данных].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_dbo_CustomLogging\Преобразование данных.Outputs[Выходные данные ошибок преобразования данных].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_dbo_CustomLogging\Преобразование данных.Outputs[Выходные данные ошибок преобразования данных].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dft_dbo_CustomLogging.Paths[Выход источника &quot;OLE DB&quot;]"
+              endId="Package\dft_dbo_CustomLogging\der_AddDate.Inputs[Вход производного столбца]"
+              name="Выход источника &quot;OLE DB&quot;"
+              startId="Package\dft_dbo_CustomLogging\ole_src_SELECT_1.Outputs[Выход источника &quot;OLE DB&quot;]" />
+            <path
+              refId="Package\dft_dbo_CustomLogging.Paths[Выход производного столбца]"
+              endId="Package\dft_dbo_CustomLogging\Преобразование данных.Inputs[Входные данные преобразования данных]"
+              name="Выход производного столбца"
+              startId="Package\dft_dbo_CustomLogging\der_AddDate.Outputs[Выход производного столбца]" />
+            <path
+              refId="Package\dft_dbo_CustomLogging.Paths[Выходные данные ошибок преобразования данных]"
+              endId="Package\dft_dbo_CustomLogging\Аудит.Inputs[Аудит Вход 1]"
+              name="Выходные данные ошибок преобразования данных"
+              startId="Package\dft_dbo_CustomLogging\Преобразование данных.Outputs[Выходные данные ошибок преобразования данных]" />
+            <path
+              refId="Package\dft_dbo_CustomLogging.Paths[Выходные данные преобразования данных]"
+              endId="Package\dft_dbo_CustomLogging\ole_dst_dbo_CustomLogging.Inputs[Вход назначения &quot;OLE DB&quot;]"
+              name="Выходные данные преобразования данных"
+              startId="Package\dft_dbo_CustomLogging\Преобразование данных.Outputs[Выходные данные преобразования данных]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="194,42"
+          Id="Package\dft_dbo_CustomLogging"
+          TopLeft="136,44" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\dft_dbo_CustomLogging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="215,42"
+          Id="Package\dft_dbo_CustomLogging\Аудит"
+          TopLeft="5.50000000000006,311.5" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\dft_dbo_CustomLogging\ole_src_SELECT_1"
+          TopLeft="281.5,5.5" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\dft_dbo_CustomLogging\ole_dst_dbo_CustomLogging"
+          TopLeft="281.5,311.5" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\dft_dbo_CustomLogging\der_AddDate"
+          TopLeft="281.5,107.5" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\dft_dbo_CustomLogging\Преобразование данных"
+          TopLeft="281.5,209.5" />
+        <EdgeLayout
+          Id="Package\dft_dbo_CustomLogging.Paths[Выход производного столбца]"
+          TopLeft="389,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_dbo_CustomLogging.Paths[Выход источника &quot;OLE DB&quot;]"
+          TopLeft="389,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_dbo_CustomLogging.Paths[Выходные данные преобразования данных]"
+          TopLeft="423.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-34.5,60"
+              Start="0,0"
+              End="-34.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2659279778393" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2659279778393"
+                    Point2="0,24.2659279778393"
+                    Point3="-4,24.2659279778393" />
+                  <mssgle:LineSegment
+                    End="-30.5,24.2659279778393" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-30.5,24.2659279778393"
+                    Point2="-34.5,24.2659279778393"
+                    Point3="-34.5,28.2659279778393" />
+                  <mssgle:LineSegment
+                    End="-34.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_dbo_CustomLogging.Paths[Выходные данные ошибок преобразования данных]"
+          TopLeft="354.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-241.5,60"
+              Start="0,0"
+              End="-241.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2659279778393" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2659279778393"
+                    Point2="0,24.2659279778393"
+                    Point3="-4,24.2659279778393" />
+                  <mssgle:LineSegment
+                    End="-237.5,24.2659279778393" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-237.5,24.2659279778393"
+                    Point2="-241.5,24.2659279778393"
+                    Point3="-241.5,28.2659279778393" />
+                  <mssgle:LineSegment
+                    End="-241.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-248.871171875,29.2659279778393,238.5050390625,11.6533203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dft_dbo_CustomLogging\ole_dst_dbo_CustomLogging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dft_dbo_CustomLogging\ole_src_SELECT_1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
